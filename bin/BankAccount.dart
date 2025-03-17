@@ -5,7 +5,7 @@ class BankAccount {
   List<String> transactions = [];
 
   BankAccount(this.accountNumber, this.holderName);
-  set Balance(double newbalance) {
+  set balance(double newbalance) {
     if (newbalance >= 0) {
       _balance = newbalance;
       transactions.add('the amount has been deposited:$_balance');
@@ -14,25 +14,16 @@ class BankAccount {
     }
   }
 
+  double get balance {
+    return _balance;
+  }
+
   set withdraw(double amount) {
     if (amount > 0 && amount <= _balance) {
       _balance -= amount;
       transactions.add("The amount has been withdrawn:$amount");
     } else {
-      print('invalid amount');
+      print('invalid amount :)');
     }
-  }
-
-  double get balance {
-    return _balance;
-  }
-}
-
-class Bank {
-  List<BankAccount> accounts = [];
-  void addAccount(int accountNumber, String holderName) {
-    var newAccount = BankAccount(accountNumber, holderName);
-    accounts.add(newAccount);
-    print('A new account has been added to ${newAccount.holderName}');
   }
 }
